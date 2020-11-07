@@ -1,6 +1,6 @@
 package structs
 
 type Offer struct {
-	Sdp string `json:"sdp"`
-	Uid string `json:"uid"`
+	Sdp       string `json:"sdp"`
+	StreamKey string `json:"streamKey"`
 }
