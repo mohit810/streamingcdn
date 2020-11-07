@@ -1,0 +1,28 @@
+<div id="signalingContainer" style="display: none">
+  Browser base64 Session Description<br />
+  <textarea id="localSessionDescription" readonly="true"></textarea> <br />
+  
+  Golang base64 Session Description<br />
+  <textarea id="remoteSessionDescription"></textarea> <br/>
+  <br/>
+</div>
+
+<br />
+
+Video<br />
+<div id="localVideos"></div>
+<!-- <video id="video1" width="160" height="120" autoplay muted controls></video> <br /> -->
+<br/>
+<div id="selectRoom">
+  <label>Type Room Name</label>
+  <input type="text" id="roomNumber"/>
+</div>
+<br/>
+<button class="createSessionButton" onclick="window.createSession(true)"> Publish a Broadcast </button><br />
+
+<br />
+
+<button onclick="window.startSession()"> Start Session </button><br />
+Logs<br />
+<div id="logs"></div>
+<script src="demo.js"></script>
