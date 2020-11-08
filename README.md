@@ -13,7 +13,7 @@ This project is in Progress.
 ### Final Goal
 To receive the broadcast, Convert it into hls in various quality then push those to cdn to serve to the User.
 
-Before using this solution you should set-up have pion/webrtc/v3 ([Go Modules](https://blog.golang.org/using-go-modules) are mandatory for using Pion WebRTC. So make sure you set export GO111MODULE=on, and explicitly specify /v3 when importing.).
+Before using this solution you should set-up pion/webrtc/v3 ([Go Modules](https://blog.golang.org/using-go-modules) are mandatory for using Pion WebRTC. So make sure you set export GO111MODULE=on, and explicitly specify /v3 when importing.).
 
 ### Open broadcast example page
 [localhost:8000](http://localhost:8000/) 
