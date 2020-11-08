@@ -16,7 +16,7 @@ To receive the broadcast, Convert it into hls in various quality then push those
 Before using this solution you should set-up have pion/webrtc/v3 ([Go Modules](https://blog.golang.org/using-go-modules) are mandatory for using Pion WebRTC. So make sure you set export GO111MODULE=on, and explicitly specify /v3 when importing.).
 
 ### Open broadcast example page
-[localhost:8000](http://localhost:8000/) You should see two buttons 'Publish a Broadcast' . 
+[localhost:8000](http://localhost:8000/) You should see two buttons. 
 
 ### Run Application
 #### Linux/macOS/windows
@@ -27,7 +27,7 @@ Run `main.go`
 * Click `Publish a Broadcast`
 * For Communicating with server you have to request the server via `POST` method and paste the sdp obtained from the browser as well as uid. The `application` will respond with an offer as a response to the `POST`, paste this into the second input field. Then press `Start Session`.
 
-![](https://github.com/mohit810/streamingcdn/blob/master/Screenshot.png)
+![](https://github.com/mohit810/streamingcdn/blob/dev-branch/Screenshot.png)
 
 ## Big Thanks to the following 
 
