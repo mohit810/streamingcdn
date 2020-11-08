@@ -118,6 +118,9 @@ func CreateWebRTCConnection(streamKey, offerStr string) (answer webrtc.SessionDe
 					if rtcpErr := peerConnection.WriteRTCP([]rtcp.Packet{&rtcp.PictureLossIndication{MediaSSRC: track.SSRC()}}); rtcpErr != nil {
 						fmt.Println(rtcpErr)
 					}
+					if rtcpSendErr := peerConnection.WriteRTCP([]rtcp.Packet{&rtcp.ReceiverEstimatedMaximumBitrate{Bitrate: 1500000, SenderSSRC: track.SSRC()}}); rtcpSendErr != nil {
+						fmt.Println(rtcpSendErr)
+					}
 				}
 			}()
 
