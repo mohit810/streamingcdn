@@ -29,7 +29,7 @@ Run `main.go`
 * Communicating with server is done by the js itself.  
 * If you want to know the request that is sent to server via `POST` method, refer to the screenshot attached below. The `application` will respond with an offer as a response to the `POST`.
 
-![](https://github.com/mohit810/streamingcdn/blob/dev-branch/Screenshot.png)
+![](https://github.com/mohit810/streamingcdn/blob/main/Screenshot.png)
 
 ## Big Thanks to the following 
 
