@@ -8,7 +8,7 @@ This project is in Progress.
 
 ### Currently in Devlopment
 1) Integrating FFmpeg.
-2) Allowing multiple users to connect start broadcasting.
+2) Allowing multiple users to connect and start broadcasting.
 
 ### Final Goal
 To receive the broadcast, Convert it into hls in various quality then push those to cdn to serve to the User.
