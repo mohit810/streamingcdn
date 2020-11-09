@@ -1,12 +1,12 @@
 let divSelectRoom = document.getElementById("selectRoom")
-let inputRoomNumber = document.getElementById("roomNumber")
+let inputstreamKey = document.getElementById("streamkey")
 let signalingContainer = document.getElementById('signalingContainer')
 let createSessionButton = document.getElementsByClassName('createSessionButton')
 let remoteSessionDescription = document.getElementById('remoteSessionDescription')
 let localSessionDescription = document.getElementById('localSessionDescription')
 let video1 = document.getElementById('video1')
 
-let roomNumber, encryptedSdp, PublisherFlag, uid
+let streamKey, encryptedSdp, PublisherFlag, uid
 
 /* eslint-env browser */
 var log = msg => {
@@ -33,12 +33,34 @@ let displayVideo = video => {
     return video
 }
 
+function postRequest () {
+    var data = JSON.stringify({
+        "sdp": encryptedSdp,
+        "streamKey": streamKey
+    })
+    console.log(data);
+    const url = "http://localhost:8000/sdp";
+    (async () => {
+        const rawResponse = await fetch(url, {
+        method : "POST",
+        //body: new FormData(document.getElementById("inputform")),
+        // -- or --
+        body : data,
+        headers :{
+            'Content-Type': 'application/json'
+        }
+    });
+    const content = await rawResponse.json();
+        remoteSessionDescription.value = content.sdp
+        window.startSession()
+})();
+}
 window.createSession = isPublisher => {
   PublisherFlag = isPublisher
-  if (inputRoomNumber.value === '') {
+  if (inputstreamKey.value === '') {
     alert("please enter a room name.")
   } else{
-    roomNumber = inputRoomNumber.value
+    streamKey = inputstreamKey.value
     let pc = new RTCPeerConnection({
       iceServers: [
         {'urls': 'stun:stun.services.mozilla.com'},
@@ -50,6 +72,7 @@ window.createSession = isPublisher => {
     if (event.candidate === null) {
       encryptedSdp = btoa(JSON.stringify(pc.localDescription))
       localSessionDescription.value = encryptedSdp
+        postRequest();
     }
   }
 
