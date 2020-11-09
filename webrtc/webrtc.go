@@ -187,7 +187,7 @@ func CreateWebRTCConnection(streamKey, offerStr string) (answer webrtc.SessionDe
 
 func startFFmpeg(streamURL string) {
 	// Create a ffmpeg process that consumes MKV via stdin, and broadcasts out to Stream URL
-	ffmpeg := exec.Command("ffmpeg", "-protocol_whitelist", "file,udp,rtp", "-i", "rtp-forwarder.sdp", "-c:v", "copy", "-c:a", "aac", "-f", "flv", "-strict", "-2", streamURL) //nolint
+	ffmpeg := exec.Command("ffmpeg", "-protocol_whitelist", "file,udp,rtp", "-i", "rtp-forwarder.sdp") //hls commands to be added
 	ffmpeg.StdinPipe()
 	ffmpegOut, _ := ffmpeg.StderrPipe()
 	if err := ffmpeg.Start(); err != nil {
