@@ -2,10 +2,11 @@ package main
 
 import (
 	"flag"
-	"github.com/julienschmidt/httprouter"
 	"net/http"
-	"practice/streamingcdn/signal"
 	"strconv"
+
+	"github.com/julienschmidt/httprouter"
+	"github.com/mohit810/streamingcdn/signal"
 )
 
 func main() {

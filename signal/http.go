@@ -2,12 +2,13 @@ package signal
 
 import (
 	"encoding/json"
-	"github.com/julienschmidt/httprouter"
-	"github.com/pion/dtls/v2/examples/util"
 	"net/http"
-	"practice/streamingcdn/encryptor"
-	"practice/streamingcdn/structs"
-	"practice/streamingcdn/webrtc"
+
+	"github.com/julienschmidt/httprouter"
+	"github.com/mohit810/streamingcdn/encryptor"
+	"github.com/mohit810/streamingcdn/structs"
+	"github.com/mohit810/streamingcdn/webrtc"
+	"github.com/pion/dtls/v2/examples/util"
 )
 
 // HTTPSDPServer starts a HTTP Server that consumes SDPs
