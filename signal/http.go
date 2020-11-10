@@ -18,7 +18,7 @@ func HTTPSDPServer(r *httprouter.Router) {
 		var offer structs.Offer
 		err := json.NewDecoder(r.Body).Decode(&offer)
 		util.Check(err)
-		answer, err := webrtc.CreateWebRTCConnection(offer.StreamKey, offer.Sdp)
+		answer, err := webrtc.CreateWebRTCConnection(offer.Sdp)
 		if err != nil {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 			return
