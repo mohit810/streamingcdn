@@ -39,7 +39,7 @@ function postRequest () {
         "streamKey": streamKey
     })
     console.log(data);
-    const url = "http://localhost:8000/sdp";
+    const url = `${window.location.origin}/sdp`;
     (async () => {
         const rawResponse = await fetch(url, {
         method : "POST",
