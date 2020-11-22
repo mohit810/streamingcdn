@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	port := flag.Int("port", 8000, "http server port")
+	port := flag.Int("port", 8080, "http server port")
 	flag.Parse()
 	r := httprouter.New()
 	signal.HTTPSDPServer(r)
