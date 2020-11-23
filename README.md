@@ -2,13 +2,18 @@
 
 This project is in Progress.
 
+### Software Req.
+1) Golang >= 1.15
+2) Ffmpeg >= 4.3.1-5 (Currently available in `Debian Sid`)
+
 ### Current State
 1) Users can connect via `POST` request and start streaming(1.5Mbps speed is hardcoded for the stream).
-2) The Server recieves the stream and forwards the rtp packets to twitch's rtmp link.
+2) The Server recieves the stream and converts it into HLS.
 
 ### Currently in Devlopment
-1) Integrating FFmpeg.
-2) Allowing multiple users to connect and start broadcasting.
+1) Integrating FFmpeg.(Completed for now, further optimization will be done later)
+2) Allowing multiple users to connect and start broadcasting.(not in priority, at this stage.)
+3) CDN Integration (currently in dev.)
 
 ### Final Goal
 To receive the broadcast, Convert it into hls in various quality then push those to cdn to serve to the User.
