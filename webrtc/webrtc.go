@@ -31,11 +31,21 @@ func CreateWebRTCConnection(offerStr string) (answer webrtc.SessionDescription, 
 	m := webrtc.MediaEngine{}
 
 	// Setup the codecs you want to use.
-	m.RegisterCodec(webrtc.NewRTPOpusCodec(webrtc.DefaultPayloadTypeOpus, 48000))
-	m.RegisterCodec(webrtc.NewRTPH264Codec(webrtc.DefaultPayloadTypeH264, 90000))
+	if err := m.RegisterCodec(webrtc.RTPCodecParameters{
+		RTPCodecCapability: webrtc.RTPCodecCapability{MimeType: "video/h264", ClockRate: 90000, Channels: 0, SDPFmtpLine: "", RTCPFeedback: nil},
+		PayloadType:        102,
+	}, webrtc.RTPCodecTypeVideo); err != nil {
+		panic(err)
+	}
+	if err := m.RegisterCodec(webrtc.RTPCodecParameters{
+		RTPCodecCapability: webrtc.RTPCodecCapability{MimeType: "audio/opus", ClockRate: 48000, Channels: 0, SDPFmtpLine: "", RTCPFeedback: nil},
+		PayloadType:        111,
+	}, webrtc.RTPCodecTypeAudio); err != nil {
+		panic(err)
+	}
 
 	// Create the API object with the MediaEngine
-	api := webrtc.NewAPI(webrtc.WithMediaEngine(m))
+	api := webrtc.NewAPI(webrtc.WithMediaEngine(&m))
 
 	// Prepare the configuration
 	config := webrtc.Configuration{
@@ -100,7 +110,7 @@ func CreateWebRTCConnection(offerStr string) (answer webrtc.SessionDescription, 
 		// Set a handler for when a new remote track starts, this handler will forward data to
 		// our UDP listeners.
 		// In your application this is where you would handle/process audio/video
-		peerConnection.OnTrack(func(track *webrtc.Track, receiver *webrtc.RTPReceiver) {
+		peerConnection.OnTrack(func(track *webrtc.TrackRemote, receiver *webrtc.RTPReceiver) {
 			fmt.Println("on track called")
 
 			// Retrieve udp connection
@@ -113,10 +123,10 @@ func CreateWebRTCConnection(offerStr string) (answer webrtc.SessionDescription, 
 			go func() {
 				ticker := time.NewTicker(time.Second * 2)
 				for range ticker.C {
-					if rtcpErr := peerConnection.WriteRTCP([]rtcp.Packet{&rtcp.PictureLossIndication{MediaSSRC: track.SSRC()}}); rtcpErr != nil {
+					if rtcpErr := peerConnection.WriteRTCP([]rtcp.Packet{&rtcp.PictureLossIndication{MediaSSRC: uint32(track.SSRC())}}); rtcpErr != nil {
 						fmt.Println(rtcpErr)
 					}
-					if rtcpSendErr := peerConnection.WriteRTCP([]rtcp.Packet{&rtcp.ReceiverEstimatedMaximumBitrate{Bitrate: 1500000, SenderSSRC: track.SSRC()}}); rtcpSendErr != nil {
+					if rtcpSendErr := peerConnection.WriteRTCP([]rtcp.Packet{&rtcp.ReceiverEstimatedMaximumBitrate{Bitrate: 1500000, SenderSSRC: uint32(track.SSRC())}}); rtcpSendErr != nil {
 						fmt.Println(rtcpSendErr)
 					}
 				}
