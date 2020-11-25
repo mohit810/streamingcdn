@@ -129,6 +129,9 @@ func CreateWebRTCConnection(offerStr string) (answer webrtc.SessionDescription, 
 					if rtcpSendErr := peerConnection.WriteRTCP([]rtcp.Packet{&rtcp.ReceiverEstimatedMaximumBitrate{Bitrate: 1500000, SenderSSRC: uint32(track.SSRC())}}); rtcpSendErr != nil {
 						fmt.Println(rtcpSendErr)
 					}
+					if ctx.Err() == context.Canceled {
+						break
+					}
 				}
 			}()
 
@@ -143,6 +146,9 @@ func CreateWebRTCConnection(offerStr string) (answer webrtc.SessionDescription, 
 				// Write
 				if _, err = c.conn.Write(b[:n]); err != nil {
 					fmt.Println(err)
+					if ctx.Err() == context.Canceled {
+						break
+					}
 				}
 			}
 		})
@@ -206,6 +212,9 @@ func startFFmpeg(ctx context.Context) {
 		scanner := bufio.NewScanner(ffmpegOut)
 		for scanner.Scan() {
 			fmt.Println(scanner.Text())
+			if ctx.Err() == context.Canceled {
+				break
+			}
 		}
 	}()
 }
