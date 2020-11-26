@@ -10,6 +10,7 @@ type config struct {
 	AudioBitrate string
 	Resolution   string
 	Bandwidth    string
+	PlaylistName string
 }
 
 var preset = map[string]*config{
@@ -21,6 +22,7 @@ var preset = map[string]*config{
 		AudioBitrate: "96k",
 		Resolution:   "640x360",
 		Bandwidth:    "800000",
+		PlaylistName: "quality_0",
 	},
 	"480p": {
 		Name:         "480p",
@@ -30,6 +32,7 @@ var preset = map[string]*config{
 		AudioBitrate: "128k",
 		Resolution:   "842x480",
 		Bandwidth:    "1400000",
+		PlaylistName: "quality_1",
 	},
 	"720p": {
 		Name:         "720p",
@@ -39,6 +42,7 @@ var preset = map[string]*config{
 		AudioBitrate: "128k",
 		Resolution:   "1280x720",
 		Bandwidth:    "2800000",
+		PlaylistName: "quality_2",
 	},
 	"1080p": {
 		Name:         "1080p",
@@ -48,6 +52,7 @@ var preset = map[string]*config{
 		AudioBitrate: "192k",
 		Resolution:   "1920x1080",
 		Bandwidth:    "5000000",
+		PlaylistName: "quality_3",
 	},
 }
 

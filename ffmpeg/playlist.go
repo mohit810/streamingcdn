@@ -44,7 +44,7 @@ func generateHLSVariant(resOptions []string, locPrefix string) ([]*Variant, erro
 			continue
 		}
 
-		url := fmt.Sprintf("%s.m3u8", c.Name)
+		url := fmt.Sprintf("%s.m3u8", c.PlaylistName)
 		if locPrefix != "" {
 			url = locPrefix + "/" + url
 		}
