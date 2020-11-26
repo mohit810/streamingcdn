@@ -21,7 +21,7 @@ To receive the broadcast, Convert it into hls in various quality then push those
 Before using this solution you should set-up pion/webrtc/v3 ([Go Modules](https://blog.golang.org/using-go-modules) are mandatory for using Pion WebRTC. So make sure you set export GO111MODULE=on, and explicitly specify /v3 when importing.).
 
 ### Open broadcast example page
-[localhost:8000](http://localhost:8000/) 
+[localhost:8080](http://localhost:8080/) 
 
 ### Run Application
 #### Linux/macOS/windows
