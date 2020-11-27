@@ -8,7 +8,7 @@ This project is in Progress.
 
 ### Current State
 1) Users can connect via `POST` request and start streaming(1.5Mbps speed is hardcoded for the stream).
-2) The Server recieves the stream and converts it into HLS (give the location where you want the files to be saved([code for this](https://github.com/mohit810/streamingcdn/blob/8125fb4afa63398dabc1048bc98e2d4266fa4dcf/ffmpeg/ffmpeg.go#L13)) ) .
+2) The Server recieves the stream and converts it into HLS (give the location where you want the files to be saved([code for this](https://github.com/mohit810/streamingcdn/blob/095c992aa86b01d2bb5d6ba524858e0d6768b747/ffmpeg/ffmpeg.go#L12 ))) .
 3) The Web UI is complete 
 
 ### Currently in Devlopment
