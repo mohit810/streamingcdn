@@ -8,7 +8,7 @@ import (
 )
 
 func StartFFmpeg(ctx context.Context) {
-	//ffmpegPath := "ffmpeg"
+	
 	targetPath := "/home/tester/go/src/streamingcdn/vid" //replace according to ur need
 	resOptions := []string{"360p", "480p", "720p", "1080p"}
 
