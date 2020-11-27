@@ -29,7 +29,7 @@ Run `main.go`
 
 ### Start a publisher
 
-* Paste your Twitch stream Key
+* Paste any random thing u wanna past
 * Click `Publish a Broadcast` and now you don't have to do anything.
 * Communicating with server is done by the js itself.  
 * If you want to know the request that is sent to server via `POST` method, refer to the screenshot attached below. The `application` will respond with an offer as a response to the `POST`.
