@@ -4,13 +4,13 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"os"
 	"os/exec"
 )
 
 func StartFFmpeg(ctx context.Context) {
-	//ffmpegPath := "ffmpeg"
-	//srcPath := "/home/tester/go/src/practice/hlsconvertor/sample720.mp4"
-	targetPath := "/home/tester/go/src/streamingcdn/vid" //replace according to ur need
+	goDir, _ := os.Getwd()
+	targetPath := goDir + "vid" //replace according to ur need
 	resOptions := []string{"360p", "480p", "720p", "1080p"}
 
 	variants, _ := generateHLSVariant(resOptions, "")
