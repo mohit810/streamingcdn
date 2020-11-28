@@ -4,13 +4,18 @@ import (
 	"bufio"
 	"context"
 	"fmt"
+	"log"
 	"os"
 	"os/exec"
 )
 
-func StartFFmpeg(ctx context.Context) {
+func StartFFmpeg(ctx context.Context, streamKey string) {
 	goDir, _ := os.Getwd()
-	targetPath := goDir + "vid" //replace according to ur need
+	errDir := os.MkdirAll("vid"+"/"+streamKey, 0755)
+	if errDir != nil {
+		log.Fatal(errDir)
+	}
+	targetPath := goDir + "/vid/" + streamKey
 	resOptions := []string{"360p", "480p", "720p", "1080p"}
 
 	variants, _ := generateHLSVariant(resOptions, "")

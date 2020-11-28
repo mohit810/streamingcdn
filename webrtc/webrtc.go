@@ -18,7 +18,7 @@ type udpConn struct {
 }
 
 // CreateWebRTCConnection function
-func CreateWebRTCConnection(offerStr string) (answer webrtc.SessionDescription, err error) {
+func CreateWebRTCConnection(offerStr, streamKey string) (answer webrtc.SessionDescription, err error) {
 
 	defer func() {
 		if e, ok := recover().(error); ok {
@@ -104,7 +104,7 @@ func CreateWebRTCConnection(offerStr string) (answer webrtc.SessionDescription, 
 			}(c.conn)
 		}
 
-		ffmpeg.StartFFmpeg(ctx)
+		ffmpeg.StartFFmpeg(ctx, streamKey)
 
 		// Set a handler for when a new remote track starts, this handler will forward data to
 		// our UDP listeners.
