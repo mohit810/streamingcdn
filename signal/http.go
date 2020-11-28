@@ -14,7 +14,7 @@ import (
 // HTTPSDPServer starts a HTTP Server that consumes SDPs
 func HTTPSDPServer(r *httprouter.Router) {
 
-	r.ServeFiles("/*filepath", http.Dir("public"))
+	r.ServeFiles("/watch/*filepath", http.Dir("vid"))
 	r.POST("/sdp", func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		var offer structs.Offer
 		err := json.NewDecoder(r.Body).Decode(&offer)
