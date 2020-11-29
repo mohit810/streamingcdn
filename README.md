@@ -6,8 +6,8 @@ This project is in Progress(ui,cdn integration), `Webrtc -> HLS` part is Complet
 #### Steps to follow for using this project
 1) Install or upgrade Golang ver. 1.15 or above
 2) Install or upgrade Ffmpeg ver. 4.3.1-5(available in `Debian Sid`) and windows ffmpeg v4.3
-3) Download the project using Git command `git clone https://github.com/mohit810/streamingcdn` 
-4) To start the server use the command `go run main.go` (Use terminal for running the server)
+3) Download the project using Git command `git clone --single-branch --branch dev-branch https://github.com/mohit810/streamingcdn.git` 
+4) To start the server open the new folder created by Git and use the command `go run main.go` (Use terminal for running the server)
 
 * Congratulations!! Now the server is up and running.
 * As a starting point for testing you can use the [Web UI](https://github.com/mohit810/streamingcdn-web-ui)
