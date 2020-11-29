@@ -1,7 +1,7 @@
 # This server accepts video and audio via webrtc and converts them in Adaptive HLS
 This project is in Progress(ui,cdn integration), `Webrtc -> HLS` part is Complete.
 
-### Steps for running this Server (I recommend using [local-testing](https://github.com/mohit810/streamingcdn/tree/local-testing) branch)
+### Steps for running this Server (I recommend using [local-testing](https://github.com/mohit810/streamingcdn/tree/local-testing) branch for local testing)
 
 #### Steps to follow for using this project
 1) Install or upgrade Golang ver. 1.15 or above
