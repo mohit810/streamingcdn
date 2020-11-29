@@ -5,6 +5,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"github.com/mohit810/streamingcdn/signal"
 	"github.com/rs/cors"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -19,6 +20,7 @@ func main() {
 	flag.Parse()
 	r := httprouter.New()
 	signal.HTTPSDPServer(r)
+	log.Println("Server is Up and Running at Port:" + strconv.Itoa(*port))
 	handler := cors.Default().Handler(r)
 	panic(http.ListenAndServe(":"+strconv.Itoa(*port), handler))
 	//panic(http.ListenAndServeTLS(":"+strconv.Itoa(*port), "cert.pem", "key.pem", r)) //uncomment for cloud testing

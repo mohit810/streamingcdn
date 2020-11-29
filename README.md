@@ -1,11 +1,11 @@
 # This server accepts video and audio via webrtc and converts them in Adaptive HLS
 This project is in Progress(ui,cdn integration), `Webrtc -> HLS` part is Complete.
 
-### Run Application
+### Steps for running this Server (I recommend using [local-testing](https://github.com/mohit810/streamingcdn/tree/local-testing) branch)
 
 #### Steps to follow for using this project
 1) Install or upgrade Golang ver. 1.15 or above
-2) Install or upgrade Ffmpeg ver. 4.3.1-5 or above (Currently available in `Debian Sid`)
+2) Install or upgrade Ffmpeg ver. 4.3.1-5(available in `Debian Sid`) and windows ffmpeg v4.3
 3) Download the project using Git command `git clone https://github.com/mohit810/streamingcdn` 
 4) To start the server use the command `go run main.go` (Use terminal for running the server)
 
@@ -16,7 +16,7 @@ This project is in Progress(ui,cdn integration), `Webrtc -> HLS` part is Complet
 1) Users can connect via `POST` request and start streaming(1.5Mbps speed is hardcoded for the stream).
 2) The Server recieves the stream and converts it into HLS.
 
-### Currently in Devlopment
+### Currently in Development
 1) Integrating FFmpeg.(Completed for now, further optimization will be done later)
 2) Allowing multiple users to connect and start broadcasting.(not in priority, at this stage.)
 3) CDN Integration ( Post UI development)
@@ -34,6 +34,7 @@ Before using this solution you should set-up pion/webrtc/v3 ([Go Modules](https:
     "streamKey":""
 }`
 
+* Playlists and all the `.ts` files are served at `/watch/streamkey/` (here streamKey is the string that the broadcaster sends in the `POST` request when connecting to the server)
 
 ## Big Thanks to the following 
 
