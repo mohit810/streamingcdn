@@ -2,9 +2,8 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	"log"
 	"net/http"
-	"os"
 	"strconv"
 
 	"github.com/julienschmidt/httprouter"
@@ -16,8 +15,6 @@ func main() {
 	flag.Parse()
 	r := httprouter.New()
 	signal.HTTPSDPServer(r)
-	fmt.Println("Server is Up and Running at Port:" + strconv.Itoa(*port))
-	wd, _ := os.Getwd()
-	fmt.Println(wd)
+	log.Println("Server is Up and Running at Port:" + strconv.Itoa(*port))
 	panic(http.ListenAndServe(":"+strconv.Itoa(*port), r))
 }
