@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"github.com/rs/cors"
+	"log"
 	"net/http"
 	"strconv"
 
@@ -15,6 +16,7 @@ func main() {
 	flag.Parse()
 	r := httprouter.New()
 	signal.HTTPSDPServer(r)
+	log.Println("Server is Up and Running at Port:" + strconv.Itoa(*port))
 	handler := cors.Default().Handler(r)
 	panic(http.ListenAndServe(":"+strconv.Itoa(*port), handler))
 }
