@@ -34,6 +34,7 @@ Before using this solution you should set-up pion/webrtc/v3 ([Go Modules](https:
     "streamKey":""
 }`
 
+* Playlists and all the `.ts` files are served at `/watch/streamkey/` (here streamKey is the string that the broadcaster sends in the `POST` request when connecting to the server)
 
 ## Big Thanks to the following 
 
