@@ -136,15 +136,24 @@ func CreateWebRTCConnection(offerStr, streamKey string) (answer webrtc.SessionDe
 
 			b := make([]byte, 1500)
 			for {
+				var writeCount, readCount int
 				// Read
 				n, readErr := track.Read(b)
 				if readErr != nil {
 					fmt.Println(readErr)
+					if readCount == 10 {
+						break
+					}
+					readCount++
 				}
 
 				// Write
 				if _, err = c.conn.Write(b[:n]); err != nil {
 					fmt.Println(err)
+					if writeCount == 10 {
+						break
+					}
+					writeCount++
 					if ctx.Err() == context.Canceled {
 						break
 					}
