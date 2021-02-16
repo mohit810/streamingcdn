@@ -15,12 +15,14 @@ This project is in Progress(ui,cdn integration), `Webrtc -> HLS` part is Complet
 ### Current State
 1) Users can connect via `POST` request and start streaming(1.5Mbps speed is hardcoded for the stream).
 2) The Server recieves the stream and converts it into HLS.
+3) [Native Android-UI](https://github.com/mohit810/android-webrtc)
+4) [Web UI](https://github.com/mohit810/streamingcdn-web-ui)
 
 ### Currently in Development
 1) Integrating FFmpeg.(Completed for now, further optimization will be done later)
 2) Allowing multiple users to connect and start broadcasting.(not in priority, at this stage.)
 3) CDN Integration ( Post UI development)
-4) Front-end UI Development in android, web, ios. (Current priority is android)
+4) Front-end UI Development in ios. 
 
 ### Final Goal
 To receive the broadcast, Convert it into hls in various quality then push those to cdn to serve to the User.
